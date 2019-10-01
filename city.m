@@ -36,7 +36,6 @@ classdef city
       number=obj.num;
     end
     
-    % There is no set function
-    
+    % There is no set function, once it is set, the value is constant
   end
 end

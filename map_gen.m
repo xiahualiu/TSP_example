@@ -8,6 +8,6 @@
 
 function map = map_gen(N)
   for i=1:N
-    map(1,i)=city(1,round(100*rand()),round(100*rand()));
+    map(1,i)=city(i,round(100*rand()),round(100*rand()));
   end
 end

@@ -1,7 +1,7 @@
 % MECH 7011 Class Project 1
 % 
 % TSP.m
-% This script controls the procedure to set up and sove the problem.
+% This script controls the main steps of the solution.
 % 1. Map Generation 2. Solving 3. Result Display
 %
 % Author: Xiahua Liu
