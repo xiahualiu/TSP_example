@@ -2,10 +2,11 @@
 % 
 % family_draw.m
 % This script accepts a family object then draw all the path on the map.
-%
+% The purpose of this function is to make debugging easier
+% 
 % Author: Xiahua Liu
 
-function family_draw(family)
+function draw_family(family)
   close all
   global population;
   

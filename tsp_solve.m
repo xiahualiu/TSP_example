@@ -23,7 +23,7 @@ function path=tsp_solve(map)
     generation.push(member(temp.re_arrange(rand_list)));
   end
 
-   family_draw(generation);
+   draw_family(generation); % Debug print
   
-   path=0;
+   path=0; % Make sure to return something before exiting
 end
