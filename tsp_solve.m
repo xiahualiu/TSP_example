@@ -18,12 +18,19 @@ function path=tsp_solve(map)
   
   % Add family member to the initial generation
   for i=1:population
-    rand_list=randperm(cnt-1,cnt-1); % Generate random list
+    rand_list=randperm(cnt,cnt); % Generate random list
     temp=path(map);
     generation.push(member(temp.re_arrange(rand_list)));
   end
-
-   draw_family(generation); % Debug print
   
-   path=0; % Make sure to return something before exiting
+  draw_family(generation); % Debug print
+  
+##  for circle=1:1000
+##    big_generation=reproduce(generation); % Reproduce
+##    next_generation=select(big_generation); % Select Good Ones
+##  end
+##  
+
+  
+  path=0; % Make sure to return something before exiting
 end
