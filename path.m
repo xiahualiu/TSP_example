@@ -7,7 +7,7 @@
 
 classdef path
   properties (SetAccess = private)
-    city_info; % Given city info
+    city_info; % constant value
     num_list; % vector of city numbers
   end
   
@@ -18,10 +18,10 @@ classdef path
     end
     
     function obj=re_arrange(obj,new_order) % path change return a new path
-      if length(obj.num_list) != length(new_order)
+      if length(obj.num_list) != length(new_order)+1
         error("The new path is not valid")
       else
-        obj.num_list=new_order;
+        obj.num_list(2:length(obj.num_list))=new_order+1;
       end
     end
     

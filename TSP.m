@@ -12,6 +12,4 @@ function TSP(N)
   
   path=tsp_solve(map); % path is a ordered list
   
-  draw_path(path); % Draw path
-  
 end

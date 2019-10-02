@@ -14,4 +14,4 @@ global population=10;
 
 N=input ("Please pick an integer in [1-10]!\n");
 
-#TSP(N);
+TSP(N);

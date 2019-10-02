@@ -27,7 +27,7 @@ classdef family < handle
     
     function member=pop(obj) % Pop up a path object on the stack
       member=obj.ptr;
-      obj.ptr=ptr.next;
+      obj.ptr=obj.ptr.next;
       obj.length = obj.length - 1;
     end
   end
