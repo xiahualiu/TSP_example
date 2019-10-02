@@ -1,7 +1,7 @@
 % MECH 7011 Class Project 1
 % 
 % draw_path.m
-% This script accept a path object then draw the path on the map.
+% This script accepts a path object then draw the path on the map.
 %
 % Author: Xiahua Liu
 

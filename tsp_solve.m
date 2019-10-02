@@ -16,16 +16,13 @@ function path=tsp_solve(map)
   % Initial family null
   generation=family();
   
-  % Add family member to the first generation
+  % Add family member to the initial generation
   for i=1:population
     rand_list=randperm(cnt-1,cnt-1); % Generate random list
     temp=path(map);
     generation.push(member(temp.re_arrange(rand_list)));
   end
   
-  for i=1:population
-    draw_path(generation.pop().item);
-  end
-  
+  % family_draw(generation);
   
 end

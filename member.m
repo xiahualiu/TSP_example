@@ -1,7 +1,7 @@
 % MECH 7011 Class Project 1
 % 
 % member.m
-% This is node of the family structure, it includes parents and offsprings
+% This is node of the family structure, it links path objects to the stack 
 % Implemented with linked list (stack - LIFO) 
 %
 % Author: Xiahua Liu
