@@ -5,7 +5,7 @@
 %
 % Author: Xiahua Liu
 
-function path=tsp_solve(map)
+function best_path=tsp_solve(map)
   
   % Make initial population
   cnt=length(map);
@@ -25,12 +25,10 @@ function path=tsp_solve(map)
   
   draw_family(generation); % Debug print
   
-##  for circle=1:1000
-##    big_generation=reproduce(generation); % Reproduce
-##    next_generation=select(big_generation); % Select Good Ones
-##  end
-##  
+%  for circle=1:1000
+%   big_generation=reproduce(generation); % Reproduce
+%   next_generation=select(big_generation); % Select Good Ones
+%   end
 
-  
-  path=0; % Make sure to return something before exiting
+  best_path=0; % Make sure to return something before exiting
 end

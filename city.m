@@ -15,7 +15,7 @@ classdef city
   
   end
   
-  methods (SetAccess = public)
+  methods
     % Construtor
     function obj=city(n,x_value,y_value) 
       obj.num=n;

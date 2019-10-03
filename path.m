@@ -18,7 +18,7 @@ classdef path
     end
     
     function obj=re_arrange(obj,new_order) % path change return a new path
-      if length(obj.num_list) != length(new_order)
+      if length(obj.num_list) ~= length(new_order)
         error("The new path is not valid")
       else
         obj.num_list(1:length(obj.num_list))=new_order;

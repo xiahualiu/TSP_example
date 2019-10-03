@@ -10,7 +10,9 @@ clear all
 close all
 clc
 
-global population=10;
+global population;
+
+population=10;
 
 N=input ("Please pick an integer in [1-10]!\n");
 
