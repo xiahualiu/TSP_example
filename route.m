@@ -5,14 +5,14 @@
 %
 % Author: Xiahua Liu
 
-classdef path
+classdef route
   properties (SetAccess = private)
     city_info; % constant value
     num_list; % vector of city numbers
   end
   
   methods
-    function obj=path(city_vec)
+    function obj=route(city_vec)
       obj.city_info=city_vec;
       obj.num_list=1:length(city_vec); % Initial value is 1:N
     end

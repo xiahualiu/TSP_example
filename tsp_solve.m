@@ -19,7 +19,7 @@ function best_path=tsp_solve(map)
   % Add family member to the initial generation
   for i=1:population
     rand_list=randperm(cnt,cnt); % Generate random list
-    temp=path(map);
+    temp=route(map);
     generation.push(member(temp.re_arrange(rand_list)));
   end
   
