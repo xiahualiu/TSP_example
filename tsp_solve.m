@@ -20,8 +20,12 @@ function best_path=tsp_solve(map)
   for i=1:population
     rand_list=randperm(cnt,cnt); % Generate random list
     temp=route(map);
-    generation.push(member(temp.re_arrange(rand_list)));
+    generation.push(temp.re_arrange(rand_list));
   end
+  
+  keyboard();
+  
+  reproduce(generation);
   
   draw_family(generation); % Debug print
   

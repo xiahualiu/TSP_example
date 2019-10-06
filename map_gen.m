@@ -9,7 +9,7 @@
 function city_map = map_gen(N)
 
   for i=1:N
-    city_map(1,i)=city(i,round(100*rand()),round(100*rand()));
+    city_map(i)=city(i,round(100*rand()),round(100*rand()));
   end
   
 end

@@ -11,6 +11,6 @@ function draw_family(family)
   global population;
   
   for i=1:population
-    draw_path(family.pop().item);
+    draw_path(family.pop());
   end
 end

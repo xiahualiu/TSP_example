@@ -9,26 +9,25 @@
 
 classdef family < handle
   properties (SetAccess = private)
-    ptr;  % Point to the stack top all the time
+    member;
     length;
   end
   
   methods
-    function obj=family() % Initialize family
-      obj.ptr=['null']; % This is null pointer
+    function obj=family(obj) % Initialize family
+      obj.member=[]; % This is null pointer
       obj.length=0;
     end
     
     function push(obj,p1) % Push a path object to the stack
-      p1.next=obj.ptr;
-      obj.ptr=p1;
-      obj.length = obj.length + 1;
+      obj.member=[obj.member,p1];
+      obj.length=obj.length+1;
     end
     
-    function member=pop(obj) % Pop up a path object on the stack
-      member=obj.ptr;
-      obj.ptr=obj.ptr.next;
-      obj.length = obj.length - 1;
+    function px=pop(obj) % Pop up a path object on the stack
+      px=obj.member(1);
+      obj.member(1)=[]; % Delete the first member
+      obj.length=obj.length-1;
     end
   end
 end

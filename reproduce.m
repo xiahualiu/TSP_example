@@ -10,8 +10,8 @@ function new=reproduce(family)
   new=family();
   
   for i=1:(family.length)/2
-    p1=family.pop().item;
-    p2=family.pop().item;
+    p1=family.pop();
+    p2=family.pop();
     
     [p1,p2,o1,o2]=crossover(p1,p2);
     
@@ -27,27 +27,36 @@ function new=reproduce(family)
 end
 
 function [father, mother, son, daughter]=crossover(p1,p2)
-  edge_table=container.Map; % Empty container
-
-  for i=1:length((p1.num_list)-1) % Forward connect
-    if edge_table.isKey(p1.num_list(i))
-      edge_table(p1.num_list(i)).insert(p1.num_list(i+1));
-    else
-      temp = edges; % Create right hand edges
-      edge_table(p1.num_list(i)) = temp.insert(p1.num_list(i+1));
-    end
-  end
-
-  for i=2:length((p1.num_list)) % Backward connect
-    if edge_table.isKey(p1.num_list(i))
-      edge_table(p1.num_list(i)).insert(p1.num_list(i-1));
-    else
-      temp = edges; % Create right hand edges
-      edge_table(p1.num_list(i)) = temp.insert(p1.num_list(i-1));
-    end
-  end
-
+  init=[];
+  edge_table=containers.Map; % Empty container
+  len=length(p1.num_list);
   
+  keyboard();
+  
+  for i=1:(len-1) % Forward connect
+    if edge_table.isKey(p1.num_list(i))
+      edge_table(num2str(p1.num_list(i))).insert(p1.num_list(i+1));
+    else
+      temp = edges; % Create right hand edges
+      temp.insert(p1.num_list(i+1));
+      edge_table(num2str(p1.num_list(i))) = temp;
+    end
+  end
+
+  for i=2:len % Backward connect
+    if edge_table.isKey(p1.num_list(i))
+        keyboard();
+      edge_table(num2str(p1.num_list(i))).insert(p1.num_list(i-1));
+    else
+      temp = edges; % Create right hand edges
+      edge_table(num2str(p1.num_list(i))) = temp.insert(p1.num_list(i-1));
+    end
+  end
+
+  edge_table(num2str(p1.num_list(1))).insert(p1.num_list(len));
+  edge_table(num2str(p1.num_list(len))).insert(p1.num_list(1));
+  
+  keyboard();
 end
 
 function px=mutate(p1)

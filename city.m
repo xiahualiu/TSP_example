@@ -18,7 +18,7 @@ classdef city
   methods
     % Construtor
     function obj=city(n,x_value,y_value) 
-      obj.num=n;
+      obj.num=int32(n);
       obj.x=x_value;
       obj.y=y_value;
     end
