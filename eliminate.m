@@ -17,5 +17,5 @@ function winners=eliminate(sample, number)
   end
   
   disp(['The shorest distance in this generation is: ',num2str(out(1))])
-  disp(['The shorest path is ', num2str(temp(find(index==1,1)).num_list)])
+  disp(['The shorest path is [ ', num2str(temp(find(index==1,1)).num_list),' ]'])
 end

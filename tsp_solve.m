@@ -23,21 +23,11 @@ function best_path=tsp_solve(map)
     generation.push(temp.re_arrange(rand_list));
   end
   
-  keyboard();
-  
-  for i=1:100
+  for i=1:10
     next=reproduce(generation);
     generation=eliminate(next,10);
-    keyboard();
+    % keyboard();
   end
-  
-  
-  draw_family(generation); % Debug print
-  
-%  for circle=1:1000
-%   big_generation=reproduce(generation); % Reproduce
-%   next_generation=select(big_generation); % Select Good Ones
-%   end
 
-  best_path=0; % Make sure to return something before exiting
+  best_path=0;
 end
