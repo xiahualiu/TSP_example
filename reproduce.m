@@ -8,6 +8,7 @@
 function new_family=reproduce(old_family)
   
   new_family=family();
+  shuffle(old_family);
   
   for i=1:(old_family.length)/2
     
@@ -19,6 +20,11 @@ function new_family=reproduce(old_family)
     new_family.push(p1);
     new_family.push(p2);
     new_family.push(o1);
+    
+    o2=mutate(o1);
+    
+    new_family.push(o2);
+    
   end
   
   if old_family.length ~= 0 % If the family have odd number of members
@@ -123,20 +129,37 @@ function [father, mother, son]=crossover(p1,p2)
 end
 
 function px=mutate(p1)
+  random_order=randperm(length(p1.num_list)); 
+  point=random_order(1); % first mutate point
+  random_order=randperm(length(p1.num_list)); 
+  another_point=random_order(1); % second mutate point
   
+  temp_list=p1.num_list;
+  temp=temp_list(point);
+  temp_list(point)=temp_list(another_point);
+  temp_list(another_point)=temp;
+  
+  px=p1.re_arrange(temp_list);
 end
 
 function min_key=find_choice(table, cand) % Output the choice of current table based on ER theory
 
-  min_temp=[NaN, inf];
+  min_dist=inf;
+  choice_cand=[];
   
   for i=cand
     temp=table(i);
     edge_len=length(temp.get());
-    if edge_len <= min_temp(2)
-      min_temp=[i, edge_len];
+    
+    if edge_len == min_dist
+      choice_cand=[choice_cand i];
+    elseif edge_len < min_dist
+      choice_cand=[i];
+      min_dist=edge_len;
     end
   end
-  
-  min_key=min_temp(1);
+
+  len=length(choice_cand);
+  k=randperm(len);
+  min_key=choice_cand(k(1));
 end

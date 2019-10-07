@@ -14,7 +14,7 @@ classdef family < handle
   end
   
   methods
-    function obj=family(obj) % Initialize family
+    function obj=family(~) % Initialize family
       obj.member=[]; % This is null pointer
       obj.length=0;
     end
@@ -28,6 +28,15 @@ classdef family < handle
       px=obj.member(1);
       obj.member(1)=[]; % Delete the first member
       obj.length=obj.length-1;
+    end
+    
+    function shuffle(obj) % Shuffle members in a family
+      vec=randperm(obj.length);
+      temp=obj.member;
+      for i=1:obj.length
+        temp(i)=obj.member(vec(i));
+      end
+      obj.member=temp;
     end
     
     function list=all(obj)

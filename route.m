@@ -8,11 +8,11 @@
 classdef route
   properties (SetAccess = private)
     city_info; % constant value
-    num_list; % vector of city numbers
   end
   
-  properties
+  properties (SetAccess = public)
     distance; % distance
+    num_list; % vector of city numbers
   end
   
   methods

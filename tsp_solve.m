@@ -23,7 +23,7 @@ function best_path=tsp_solve(map)
     generation.push(temp.re_arrange(rand_list));
   end
   
-  for i=1:10
+  for i=1:100
     next=reproduce(generation);
     generation=eliminate(next,10);
     % keyboard();

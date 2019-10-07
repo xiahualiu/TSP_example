@@ -18,4 +18,9 @@ function winners=eliminate(sample, number)
   
   disp(['The shorest distance in this generation is: ',num2str(out(1))])
   disp(['The shorest path is [ ', num2str(temp(find(index==1,1)).num_list),' ]'])
+  
+
+  best_path=temp(index(1)); % Update best path
+  draw_path(best_path);
+
 end

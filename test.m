@@ -1,8 +1,8 @@
-% MECH 7011 Class Project 1
+% MECH 7011 Class Project 115
 % 
 % test.m
 % This script does the intialization job and handles the input sequence.
-%
+%1
 % Author: Xiahua Liu
 
 
