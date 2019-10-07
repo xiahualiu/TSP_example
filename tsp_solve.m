@@ -25,7 +25,12 @@ function best_path=tsp_solve(map)
   
   keyboard();
   
-  reproduce(generation);
+  for i=1:100
+    next=reproduce(generation);
+    generation=eliminate(next,10);
+    keyboard();
+  end
+  
   
   draw_family(generation); % Debug print
   

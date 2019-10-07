@@ -8,9 +8,10 @@
 
 function draw_family(family)
   close all
-  global population;
   
-  for i=1:population
-    draw_path(family.pop());
+  temp=family.all();
+  
+  for i=1:length(temp)
+    draw_path(temp(i));
   end
 end

@@ -29,5 +29,9 @@ classdef family < handle
       obj.member(1)=[]; % Delete the first member
       obj.length=obj.length-1;
     end
+    
+    function list=all(obj)
+      list=obj.member;
+    end
   end
 end

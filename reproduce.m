@@ -5,60 +5,138 @@
 %
 % Author: Xiahua Liu
 
-function new=reproduce(family)
+function new_family=reproduce(old_family)
   
-  new=family();
+  new_family=family();
   
-  for i=1:(family.length)/2
-    p1=family.pop();
-    p2=family.pop();
+  for i=1:(old_family.length)/2
     
-    [p1,p2,o1,o2]=crossover(p1,p2);
+    p1=old_family.pop();
+    p2=old_family.pop();
     
-    new.push(p1);
-    new.push(p2);
-    new.push(o1);
-    new.push(o2);
+    [p1,p2,o1]=crossover(p1,p2);
+    
+    new_family.push(p1);
+    new_family.push(p2);
+    new_family.push(o1);
   end
   
-  if family.length ~= 0 % If the family have odd number of members
-    new.push(family.pop());
+  if old_family.length ~= 0 % If the family have odd number of members
+    new_family.push(old_family.pop());
   end
+  
 end
 
-function [father, mother, son, daughter]=crossover(p1,p2)
-  init=[];
-  edge_table=containers.Map; % Empty container
+function [father, mother, son]=crossover(p1,p2)
+  
+  father=p1;
+  mother=p2;
+  son=p1; % Intialize son, will be changed afterwards
+  son_list=zeros(1,length(p1.num_list));
+  
+  edge_table=containers.Map(uint32(1),edges()); % Empty container
+  remove(edge_table,1);
+  
   len=length(p1.num_list);
-  
-  keyboard();
-  
+
   for i=1:(len-1) % Forward connect
     if edge_table.isKey(p1.num_list(i))
-      edge_table(num2str(p1.num_list(i))).insert(p1.num_list(i+1));
+      temp=edge_table(p1.num_list(i)).insert(p1.num_list(i+1));
+      edge_table(p1.num_list(i))=temp;
     else
-      temp = edges; % Create right hand edges
-      temp.insert(p1.num_list(i+1));
-      edge_table(num2str(p1.num_list(i))) = temp;
+      temp=edges();
+      temp=temp.insert(p1.num_list(i+1));
+      edge_table(p1.num_list(i))=temp;
     end
   end
 
   for i=2:len % Backward connect
     if edge_table.isKey(p1.num_list(i))
-        keyboard();
-      edge_table(num2str(p1.num_list(i))).insert(p1.num_list(i-1));
+      temp=edge_table(p1.num_list(i)).insert(p1.num_list(i-1));
+      edge_table(p1.num_list(i))=temp;
     else
-      temp = edges; % Create right hand edges
-      edge_table(num2str(p1.num_list(i))) = temp.insert(p1.num_list(i-1));
+      temp=edges();
+      temp=temp.insert(p1.num_list(i-1));
+      edge_table(p1.num_list(i))=temp;
+    end
+  end
+  
+  temp=edge_table(p1.num_list(1)).insert(p1.num_list(len));
+  edge_table(p1.num_list(1))=temp;
+  temp=edge_table(p1.num_list(len)).insert(p1.num_list(1));
+  edge_table(p1.num_list(len))=temp;
+
+  for i=1:(len-1) % Forward connect
+    if edge_table.isKey(p2.num_list(i))
+      temp=edge_table(p2.num_list(i)).insert(p2.num_list(i+1));
+      edge_table(p2.num_list(i))=temp;
+    else
+      temp=edges();
+      temp=temp.insert(p2.num_list(i+1));
+      edge_table(p2.num_list(i))=temp;
     end
   end
 
-  edge_table(num2str(p1.num_list(1))).insert(p1.num_list(len));
-  edge_table(num2str(p1.num_list(len))).insert(p1.num_list(1));
+  for i=2:len % Backward connect
+    if edge_table.isKey(p2.num_list(i))
+      temp=edge_table(p2.num_list(i)).insert(p2.num_list(i-1));
+      edge_table(p2.num_list(i))=temp;
+    else
+      temp=edges();
+      temp=temp.insert(p2.num_list(i-1));
+      edge_table(p2.num_list(i))=temp;
+    end
+  end
+
+  temp=edge_table(p2.num_list(1)).insert(p2.num_list(len));
+  edge_table(p2.num_list(1))=temp;
+  temp=edge_table(p2.num_list(len)).insert(p2.num_list(1));
+  edge_table(p2.num_list(len))=temp;
   
-  keyboard();
+  candidate=p1.num_list; % At first all cities are candidate
+  
+  for i=1:len
+    % Choose the city with fewest adjacent cities
+    choice=find_choice(edge_table,candidate);
+    
+    edge_temp=edge_table(choice);
+    
+    % Next city candidate
+    candidate=edge_temp.get();
+    remove(edge_table,choice);
+    
+    if isempty(candidate) % If no candidate, candidate becomes residual cities on table
+      candidate=cell2mat(keys(edge_table));
+    end
+
+    for ii=cell2mat(keys(edge_table))
+      temp=edge_table(ii);
+      edge_table(ii)=temp.delete(choice);
+    end
+    
+    son_list(i)=choice;
+    
+  end
+  
+  son=son.re_arrange(son_list);
+  
 end
 
 function px=mutate(p1)
   
+end
+
+function min_key=find_choice(table, cand) % Output the choice of current table based on ER theory
+
+  min_temp=[NaN, inf];
+  
+  for i=cand
+    temp=table(i);
+    edge_len=length(temp.get());
+    if edge_len <= min_temp(2)
+      min_temp=[i, edge_len];
+    end
+  end
+  
+  min_key=min_temp(1);
 end

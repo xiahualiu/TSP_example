@@ -11,21 +11,28 @@ classdef route
     num_list; % vector of city numbers
   end
   
+  properties
+    distance; % distance
+  end
+  
   methods
     function obj=route(city_vec)
       obj.city_info=city_vec;
-      obj.num_list=1:length(city_vec); % Initial value is 1:N
+      obj.num_list=uint32(1:length(city_vec)); % Initial value is 1:N
+      obj.distance=obj.dist(); % Initial value of distance
     end
     
-    function obj=re_arrange(obj,new_order) % path change return a new path
+    function new_obj=re_arrange(obj,new_order) % path change return a new path
+      new_obj=obj; % Copy
       if length(obj.num_list) ~= length(new_order)
-        error("The new path is not valid")
+        error('The new route is not valid')
       else
-        obj.num_list(1:length(obj.num_list))=new_order;
+        new_obj.num_list=uint32(new_order);
+        new_obj.distance=new_obj.dist(); % Initial value of distance
       end
     end
     
-    function val=distance(obj) % Calculate the total travel distance
+    function val=dist(obj) % Calculate the total travel distance
       val=0;
       for i=1:(length(obj.num_list)-1)
         val=val+...
