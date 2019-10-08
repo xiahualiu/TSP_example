@@ -10,21 +10,22 @@ function update(path)
   global fh; 
   global sh;
   global ph;
+  global N;
   
   % get new plot data
-  x_dots=zeros(1,length(path.num_list));
-  y_dots=zeros(1,length(path.num_list));
+  x_dots=zeros(1,N);
+  y_dots=zeros(1,N);
   
-  x_vec=zeros(1,length(path.num_list+1));
-  y_vec=zeros(1,length(path.num_list+1));
+  x_vec=zeros(1,N+1);
+  y_vec=zeros(1,N+1);
   
-  for i=1:length(path.num_list)
+  for i=1:N
     x_dots(1,i)=path.city_info(1,path.num_list(1,i)).get_x();
     y_dots(1,i)=path.city_info(1,path.num_list(1,i)).get_y();
   end
   
 
-  for i=1:length(path.num_list)
+  for i=1:N
     x_vec(i)=path.city_info(path.num_list(i)).get_x();
     y_vec(i)=path.city_info(path.num_list(i)).get_y();
   end
