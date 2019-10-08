@@ -17,6 +17,8 @@ global loop_times; % The program stop at loop_times gen.
 
 N=input ('Please pick an integer in [1-10]!\n');
 population=N*2;
-loop_times=N*N; % squared loop times
+loop_times=50; % squared loop time limit
 
+tic
 TSP(N);
+toc

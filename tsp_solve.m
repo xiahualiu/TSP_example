@@ -27,8 +27,9 @@ function best_path=tsp_solve(map)
   
   init_draw();
   
-  for i=1:loop_times/2
-    next=reproduce(generation);
+  for i=1:loop_times
+    mutation_rate=i;
+    next=reproduce(generation,mutation_rate);
     generation=eliminate(next,population);
     % keyboard();
   end
