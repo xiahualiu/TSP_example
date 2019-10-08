@@ -14,7 +14,7 @@ global population;
 global N;
 global loop_times; % The program stop at loop_times gen. 
 
-loop_times=100;
+loop_times=200;
 
 N=input ('Please pick an integer in [1-10]!\n');
 population=N*2;

@@ -7,6 +7,8 @@
 
 function new_family=reproduce(old_family)
  
+  global N;
+  
   new_family=family();
   shuffle(old_family);
   
@@ -15,15 +17,20 @@ function new_family=reproduce(old_family)
     p1=old_family.pop();
     p2=old_family.pop();
     
-    [p1,p2,o1]=crossover_pmx(p1,p2);
-    [p1,p2,o2]=crossover_er(p1,p2);
+    [~,~,o1]=crossover_pmx(p1,p2);
+    [~,~,o2]=crossover_er(p2,p1);
+    [~,~,o3]=crossover_pmx(p2,p1.re_arrange(randperm(N)));
+    
+    o4=mutate(o1);
+    o5=mutate(o2);
     
     new_family.push(p1);
     new_family.push(p2);
     new_family.push(o1);
     new_family.push(o2);
-    new_family.push(mutate(o1));
-    new_family.push(mutate(o2));
+    new_family.push(o3);
+    new_family.push(o4);
+    new_family.push(o5);
     
   end
   
@@ -181,9 +188,12 @@ function [father, mother, son]=crossover_er(p1,p2)
 end
 
 function px=mutate(p1)
-  random_order=randperm(length(p1.num_list)); 
+
+  global N;
+  
+  random_order=randperm(N); 
   point=random_order(1); % first mutate point
-  random_order=randperm(length(p1.num_list)); 
+  random_order=randperm(N); 
   another_point=random_order(1); % second mutate point
   temp_list=p1.num_list;
   temp=temp_list(point);

@@ -36,7 +36,7 @@ function update(path)
   
   set(sh,'XData',x_dots,'YData',y_dots);
   set(ph,'XData',x_vec,'YData',y_vec);
-  set(fh,'Name',['The total distance is  ', num2str(path.distance)])
+  set(fh, 'Name', ['The total distance is  ', num2str(path.distance)]);
   drawnow
   %legend({'Other City', 'Path', 'Start City'});
 end
