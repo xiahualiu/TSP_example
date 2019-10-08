@@ -20,9 +20,9 @@ function new_family=reproduce(old_family,mutation_rate)
     %[~,~,o1]=crossover_pmx(p1,p2);
     [~,~,o2]=crossover_er(p2,p1);
     %[~,~,o3]=crossover_pmx(p2,p1.re_arrange(randperm(N)));
-    
+    o3=o2;
     for i=1:mutation_rate % change over time
-    o5=mutate(o2);
+    o5=mutate(o3);
     new_family.push(o5);
     end
     
@@ -30,7 +30,7 @@ function new_family=reproduce(old_family,mutation_rate)
     new_family.push(p2);
     %new_family.push(o1);
     new_family.push(o2);
-    %new_family.push(o3);
+    new_family.push(o3);
   end
   
   if old_family.length ~= 0 % If the family have odd number of members
