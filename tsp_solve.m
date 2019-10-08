@@ -33,5 +33,6 @@ function best_path=tsp_solve(map)
     % keyboard();
   end
 
-  best_path=0;
+  temp=generation.all;
+  best_path=temp(1);
 end

@@ -5,7 +5,6 @@
 %1
 % Author: Xiahua Liu
 
-
 clear all
 close all
 clc
@@ -14,9 +13,10 @@ global population;
 global N;
 global loop_times; % The program stop at loop_times gen. 
 
-loop_times=200;
+
 
 N=input ('Please pick an integer in [1-10]!\n');
 population=N*2;
+loop_times=N*N; % squared loop times
 
 TSP(N);

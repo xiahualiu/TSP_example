@@ -10,6 +10,6 @@ function TSP(N)
   
   map=map_gen(N); % Map is a vector contains cities
   
-  tsp_solve(map); % path is a ordered list
+  best=tsp_solve(map); % path is a ordered list
   
 end
