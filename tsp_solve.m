@@ -7,6 +7,8 @@
 
 function best_path=tsp_solve(map)
   
+  global loop_times;
+  
   % Make initial population
   cnt=length(map);
   
@@ -23,9 +25,11 @@ function best_path=tsp_solve(map)
     generation.push(temp.re_arrange(rand_list));
   end
   
-  for i=1:100
+  init_draw();
+  
+  for i=1:loop_times/2
     next=reproduce(generation);
-    generation=eliminate(next,10);
+    generation=eliminate(next,population);
     % keyboard();
   end
 

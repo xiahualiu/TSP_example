@@ -6,7 +6,7 @@
 % Author: Xiahua Liu
 
 function new_family=reproduce(old_family)
-  
+ 
   new_family=family();
   shuffle(old_family);
   
@@ -15,15 +15,15 @@ function new_family=reproduce(old_family)
     p1=old_family.pop();
     p2=old_family.pop();
     
-    [p1,p2,o1]=crossover(p1,p2);
+    [p1,p2,o1]=crossover_pmx(p1,p2);
+    [p1,p2,o2]=crossover_er(p1,p2);
     
     new_family.push(p1);
     new_family.push(p2);
     new_family.push(o1);
-    
-    o2=mutate(o1);
-    
     new_family.push(o2);
+    new_family.push(mutate(o1));
+    new_family.push(mutate(o2));
     
   end
   
@@ -33,7 +33,59 @@ function new_family=reproduce(old_family)
   
 end
 
-function [father, mother, son]=crossover(p1,p2)
+function [father, mother, son]=crossover_pmx(p1,p2)
+  father=p1;
+  mother=p2;
+  len=length(p1.num_list);
+  son1=zeros(1,len);
+  rate=1;
+  for k=1:1000
+      low=randi(len);
+      high=low+rate;
+      if high>len
+          continue;
+      else
+          break;
+      end
+  end
+  for k=low:high
+      son1(k)=p2.num_list(k);
+  end
+  for k=low:high
+      c=0;
+      for j=low:high
+          if(p1.num_list(k)==son1(j))
+              c=c+1;
+              break;
+          end
+      end
+      if c==0
+          crossoverpmx(k,k);
+      end
+  end
+  function crossoverpmx(n,k)
+      for p=1:len
+          if son1(n)==p1.num_list(p)
+              if son1(p)==0
+                 son1(p)=p1.num_list(k);
+                 break
+              else
+                  crossoverpmx(p,k)
+              end
+          end
+      end
+  end
+    for n=1:len
+        if son1(n)==0
+        son1(n)=p1.num_list(n);
+        end
+    end
+  son=p1;
+  son_list=son1;
+  son=son.re_arrange(son_list);
+end
+
+function [father, mother, son]=crossover_er(p1,p2)
   
   father=p1;
   mother=p2;
@@ -133,14 +185,14 @@ function px=mutate(p1)
   point=random_order(1); % first mutate point
   random_order=randperm(length(p1.num_list)); 
   another_point=random_order(1); % second mutate point
-  
   temp_list=p1.num_list;
   temp=temp_list(point);
   temp_list(point)=temp_list(another_point);
   temp_list(another_point)=temp;
-  
   px=p1.re_arrange(temp_list);
 end
+
+
 
 function min_key=find_choice(table, cand) % Output the choice of current table based on ER theory
 

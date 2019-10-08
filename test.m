@@ -11,9 +11,12 @@ close all
 clc
 
 global population;
+global N;
+global loop_times; % The program stop at loop_times gen. 
 
-population=10;
+loop_times=100;
 
 N=input ('Please pick an integer in [1-10]!\n');
+population=N*2;
 
 TSP(N);

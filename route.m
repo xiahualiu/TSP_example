@@ -6,11 +6,8 @@
 % Author: Xiahua Liu
 
 classdef route
-  properties (SetAccess = private)
-    city_info; % constant value
-  end
-  
   properties (SetAccess = public)
+    city_info; % constant value
     distance; % distance
     num_list; % vector of city numbers
   end
