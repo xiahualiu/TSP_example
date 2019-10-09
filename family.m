@@ -3,9 +3,6 @@
 % family.m
 % This is the family structure, wrapping the path structure up,
 % The stack includes parents and offsprings and can grow bigger or shrink.
-% Implemented over linked list (stack - LIFO) 
-%
-% Author: Xiahua Liu
 
 classdef family < handle
   properties (SetAccess = private)

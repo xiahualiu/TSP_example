@@ -3,8 +3,6 @@
 % city.m
 % This part define the city class
 % All cities lie on the [1-100] area
-%
-% Author: Xiahua Liu
 
 classdef city
   properties (SetAccess = private)

@@ -3,8 +3,6 @@
 % map_gen.m
 % This part generate map according to the N number
 % All cities lie on the [1-100] area
-%
-% Author: Xiahua Liu
 
 function city_map = map_gen(N)
   for i=1:N

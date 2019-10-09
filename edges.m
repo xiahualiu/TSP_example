@@ -2,8 +2,6 @@
 % 
 % edges.m
 % Edge is a special object that support non repeated insertion and delete.
-%
-% Author: Xiahua Liu
 
 
 classdef edges

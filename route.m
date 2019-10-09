@@ -2,8 +2,6 @@
 % 
 % path.m
 % This file define a class of path, which is a vectors of cities
-%
-% Author: Xiahua Liu
 
 classdef route
   properties (SetAccess = public)

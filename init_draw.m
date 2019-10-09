@@ -1,8 +1,6 @@
 % MECH 7011 Class Project 1
 % 
 % init_draw.m
-%
-% Author: Xiahua Liu
 
 function init_draw()
 

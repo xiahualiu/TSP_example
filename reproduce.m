@@ -2,8 +2,6 @@
 % 
 % reproduce.m
 % This is the main body of the GA algorithm
-%
-% Author: Xiahua Liu
 
 function new_family=reproduce(old_family,mutation_rate)
  

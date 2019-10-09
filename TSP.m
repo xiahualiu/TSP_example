@@ -3,8 +3,6 @@
 % TSP.m
 % This script controls the main steps of the solution.
 % 1. Map Generation 2. Solving 3. Result Display
-%
-% Author: Xiahua Liu
 
 function TSP(N)
   

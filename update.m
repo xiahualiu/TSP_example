@@ -2,8 +2,6 @@
 % 
 % draw_path.m
 % This script accepts a path object from workspace then draw the path on the plot.
-%
-% Author: Xiahua Liu
 
 function update(path)
 

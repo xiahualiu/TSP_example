@@ -2,8 +2,6 @@
 % 
 % eliminate.m
 % eliminate bad results in the samples
-%
-% Author: Xiahua Liu
 
 function winners=eliminate(sample, number)
   winners=family();

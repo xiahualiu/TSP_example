@@ -2,8 +2,6 @@
 % 
 % tsp_solve.m
 % This is the main body of the GA algorithm
-%
-% Author: Xiahua Liu
 
 function best_path=tsp_solve(map)
   
