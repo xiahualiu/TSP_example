@@ -1,5 +1,5 @@
-% Xiahua Liu and Tyler Watson
-% Problem 1: TSP
+% Xiahua Liu
+
 close all
 clear
 clc

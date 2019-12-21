@@ -3,7 +3,7 @@
 % test.m
 % This script does the intialization job and handles the input sequence.
 %
-% Author: Xiahua Liu Tyler Watson 
+% Author: Xiahua Liu
 
 clear all
 close all
