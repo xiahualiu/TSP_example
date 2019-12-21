@@ -1,4 +1,5 @@
-% Author: Xiahua Liu and Tyler Watson
+% Author: Xiahua Liu
+% Date: 11/26/2019
 
 clear
 clc
@@ -54,5 +55,6 @@ end
 % Do the final step (return to 1)
 DP.final_step(map);
 % After final step (return to 1), DP table should only has one optimal path.
+
 % Print result
 DP.get_shortest_path();
